@@ -3,7 +3,7 @@ import React from 'react'
 function App() {
   React.useEffect(() => {
     const getData = async () => {
-      const res = await fetch('/api/endpoint') // * <-- replace with your endpoint
+      const res = await fetch('/api/stores')
       const data = await res.json()
       console.log(data)
     }
