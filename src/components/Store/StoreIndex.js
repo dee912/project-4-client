@@ -13,7 +13,6 @@ function StoreIndex() {
       try {
         const { data } = await getAllStores()
         setStores(data)
-        console.log(data)
       } catch (error) {
         console.log(error)
       }
@@ -24,7 +23,6 @@ function StoreIndex() {
   const handleChange = (e) => {
     setSearchTerm(e.target.value)
   }
-
 
   return (
     <>
