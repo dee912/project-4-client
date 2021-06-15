@@ -8,7 +8,7 @@ import StoreShow from './components/Store/StoreShow'
 import AboutUs from './components/common/AboutUs'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
-import Profile from './components/Profile'
+import Profile from './components/Profile/Profile'
 
 function App() {
 

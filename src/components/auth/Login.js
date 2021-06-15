@@ -1,20 +1,74 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
+
 import useForm from '../../hooks/useForm'
 import { login } from '../../lib/api'
+import { setToken } from '../../lib/auth'
 
 
-function Login() {
-  React.useEffect(() => {
-    const getData = async () => {
-      const res = await fetch('/api/stores')
-      const data = await res.json()
-      console.log(data)
-    }
-    getData()
+export default function Login() {
+  const history = useHistory()
+  const [isError, setIsError] = React.useState(false)
+  const { formData, handleChange } = useForm({
+    email: '',
+    password: '',
   })
 
-  return <h1>Login</h1>
-}
+  const handleSubmit = async (e) => {
+    e.preventDefault()
 
-export default Login
+    try {
+      const { data } = await login(formData)
+      setToken(data.token)
+      history.push('/stores')
+    } catch (err) {
+      setIsError(true)
+    }
+  }
+
+  return (
+    <section className="section">
+      <div className="container">
+        <div className="form">
+          <form
+            onSubmit={handleSubmit}  
+          >
+            <div className="field">
+              <label className="label">Email</label>
+              <div className="control">
+                <input
+                  className="input"
+                  placeholder="Email"
+                  name="email"
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Password</label>
+              <div className="control">
+                <input
+                  type="password"
+                  className="input"
+                  placeholder="Password"
+                  name="password"
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            {isError && (
+              <p className="help is-danger">
+                Incorrect login details
+              </p>
+            )}
+            <div className="field">
+              <button type="submit" className='button is-fullwidth is-warning'>
+                Log In
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  )
+}

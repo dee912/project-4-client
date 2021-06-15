@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
+import { getPayload } from '../../lib/auth'
 
 export default function Nav() {
+
+  const { profileId } = getPayload()
+
   return (
     <nav>
       <Link to="">
@@ -11,6 +15,9 @@ export default function Nav() {
       </Link>
       <Link to="/about">
         About Us
+      </Link>
+      <Link to={`/profile/${profileId}`}>
+        Profile
       </Link>
       <Link to="/login">
         Login

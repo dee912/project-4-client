@@ -1,4 +1,11 @@
 import axios from 'axios'
+import { getToken } from './auth'
+
+function headers() {
+  return {
+    headers: { Authorization: `Bearer ${getToken()}` },
+  }
+}
 
 const baseUrl = '/api'
 
@@ -16,4 +23,8 @@ export function register(formData) {
 
 export function login(formData) {
   return axios.post(`${baseUrl}/auth/login/`, formData)
+}
+
+export function profilePage(profileId) {
+  return axios.get(`${baseUrl}/auth/profile/${profileId}`, headers())
 }
