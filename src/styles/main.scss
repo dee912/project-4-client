@@ -15,14 +15,33 @@
     overflow-y: scroll;
     border: 2px solid black;
   }
+  .pin {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    img {
+    width: 20px;
+    height: 20px;
+    }
+  }
+  .mapInfo {
+    display: grid;
+    place-items: center;
+    max-width: 300px;
+    max-height: 400px;
+    img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+  }
 }
 
 .cardScroll {
   max-width: 40vw;
   margin: 20px;
     img{
-      width: 200px;
-      height: 200px;
+      width: 250px;
+      height: 250px;
       object-fit: cover;
     }
 }
