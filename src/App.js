@@ -9,6 +9,7 @@ import AboutUs from './components/common/AboutUs'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Profile from './components/Profile/Profile'
+import NewStore from './components/Store/NewStore'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <Nav />
       <Switch>
         <Route exact path="/" component={Home}/>
+        <Route exact path="/stores/new" component={NewStore}/>
         <Route path="/stores/:storeId" component={StoreShow}/>
         <Route path="/stores" component={StoreIndex}/>
         <Route path="/about" component={AboutUs}/>

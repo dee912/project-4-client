@@ -19,6 +19,9 @@ export default function Nav() {
       <Link to={`/profile/${profileId}`}>
         Profile
       </Link>
+      <Link to="/stores/new">
+        New Store
+      </Link>
       <Link to="/login">
         Login
       </Link>
