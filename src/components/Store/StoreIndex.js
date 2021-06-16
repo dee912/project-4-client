@@ -43,14 +43,6 @@ export default function StoreIndex() {
             onChange={handleChange}
           />
           <div className="storeCard">
-            <p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p>
-            <p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p>
-            <p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p>
-            <p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p>
-            <p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p>
-            <p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p>
-            <p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p>
-            <p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p><p>this will scroll</p>
             {stores && stores.filter((store) => {
               if (searchTerm === '') {
                 return store
@@ -88,7 +80,7 @@ export default function StoreIndex() {
                     }
                   }
                 >
-                  <img src="https://www.iconpacks.net/icons/2/free-store-icon-2017-thumb.png" alt={store.name} />
+                  <img className="pinImage" src="https://www.iconpacks.net/icons/2/free-store-icon-2017-thumb.png" alt={store.name} />
                 </button>
               </Marker>
             ))}

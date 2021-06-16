@@ -1,5 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Unica+One&display=swap');
+
+$font-Unicia: 'Unica One', cursive;
+$font-Montserrat: 'Montserrat', sans-serif;
+
 * {
   text-decoration: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.containerNav{
+  overflow: hidden;
+  background-color: rgba(114, 114, 114, 0.527);
+  height: 50px;
+  .navbarItem{
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 25px;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.425);
+      color: black;
+      transition: 0.3s;
+      box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.5);
+    }
+  }
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    height: 50px;
+    width: 150px;
+    float: right;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: none;
+    text-decoration: none;
+  }
+  .button:hover {
+    background-color: rgba(255, 255, 255, 0.425);
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.5s;
+    box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.5);
+  }
 }
 
 .storeIndex {
@@ -7,20 +61,28 @@
   flex-direction: row;
   .mapbox{
     float: right;
+    margin-top: 22px;
   }
   .storeCard {
+    font-family: $font-Unicia;
+    color: black;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     overflow-y: scroll;
-    border: 2px solid black;
   }
   .pin {
     background-color: rgba(255, 255, 255, 0);
     border: none;
-    img {
+  }
+  .pinImage {
     width: 20px;
     height: 20px;
+    &:hover{
+    width: 25px;
+    height: 25px;
+    transition: 0.2s;
+    cursor: pointer;
     }
   }
   .mapInfo {
@@ -44,4 +106,62 @@
       height: 250px;
       object-fit: cover;
     }
+}
+
+.storeCard {
+  display: flex;
+  overflow-y: scroll;
+	box-shadow: inset 0 0 2px 0 rgba(0,0,0,.15);
+  padding: 3px;
+  border-radius: 5px;
+  max-height: 90vh;
+}
+
+.storeShow {
+  display: flex;
+  flex-direction: column;
+  h1 {
+  font-family: $font-Unicia;
+  font-size: 50px;
+  }
+  h2, header {
+  font-family: $font-Unicia;
+  }
+  p { 
+    font-family: $font-Montserrat;
+    font-weight: bold;
+  }
+  .storeBody {
+    display: grid;
+    place-items: center;
+  }
+  .storeHeader {
+    display: grid;
+    place-items: center;
+    background-color: grey;
+  }
+  .storeTop {
+    display: grid;
+    place-items: center;
+  }
+  .storeMiddle {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    max-width: 600px;
+  }
+  .shop {
+    margin: 5px;
+    max-width: 600px;
+    max-height: 600px;
+  }
+  .product {
+    margin: 5px;
+    max-width: 600px;
+    max-height: 600px;
+  }
+  .storeBottom {
+    margin: 10px;
+  }
 }

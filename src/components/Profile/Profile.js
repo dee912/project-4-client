@@ -1,25 +1,28 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { profilePage } from '../../lib/api'
+import { getPayload } from '../../lib/auth'
 
-function Profile() {
+export default function Profile() {
 
-  const { profileId } = useParams()
+  const { sub } = getPayload()
   const [profile, setProfile] = React.useState(null)
 
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await profilePage(profileId)
+        console.log('here')
+        const { data } = await profilePage(sub)
+        console.log('data', data)
         setProfile(data)
       } catch (error) {
         console.log(error)
       }
     }
     getData()
-  }, [profileId])
+  }, [sub])
+
+  console.log('profile', profile && profile)
 
   return <h1>{profile && profile.username}</h1>
 }
-
-export default Profile

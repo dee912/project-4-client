@@ -1,9 +1,9 @@
 import React from 'react'
 
 const uploadUrl = process.env.REACT_APP_CLOUDINARY_URL
-const uploadPreset = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+const uploadPreset = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET_TWO
 
-function ImageUpload({ onUpload }) {
+function ProductUpload({ onUpload }) {
   const [image, setImage] = React.useState('')
 
   function handleUpload() {
@@ -34,4 +34,4 @@ function ImageUpload({ onUpload }) {
   )
 }
 
-export default ImageUpload
+export default ProductUpload

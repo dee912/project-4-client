@@ -25,3 +25,19 @@ export function getPayload() {
   if (parts.length < 3) return false
   return JSON.parse(atob(parts[1])) 
 }
+
+console.log('toke', getPayload())
+
+
+export function isAuthenticated() {
+  const payload = getPayload()
+  if (!payload) return false
+  const now = Math.round(Date.now() / 1000)
+  return now < payload.exp
+}
+
+export function isOwner(profileId) {
+  const payload = getPayload()
+  if (!payload || !isAuthenticated) return false
+  return payload.profileId === profileId
+}

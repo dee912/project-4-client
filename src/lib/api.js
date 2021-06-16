@@ -17,6 +17,14 @@ export function getSingleStore(storeId) {
   return axios.get(`${baseUrl}/stores/${storeId}/`)
 }
 
+export function newStore(formData) {
+  return axios.post(`${baseUrl}/stores/`, formData, headers())
+}
+
+export function getAllCategories() {
+  return axios.get(`${baseUrl}/stores/category/`)
+}
+
 export function register(formData) {
   return axios.post(`${baseUrl}/auth/register/`, formData)
 }
@@ -25,6 +33,6 @@ export function login(formData) {
   return axios.post(`${baseUrl}/auth/login/`, formData)
 }
 
-export function profilePage(profileId) {
-  return axios.get(`${baseUrl}/auth/profile/${profileId}`, headers())
+export function profilePage(sub) {
+  return axios.get(`${baseUrl}/auth/profile/${sub}/`, headers())
 }

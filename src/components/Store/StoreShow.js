@@ -24,15 +24,30 @@ export default function StoreShow() {
   return (
     <>
       {store &&
-        <div>
-          {store.category.map((category) => (
-            <header key={category.name}>{category.name}</header>
-          ))}
-          <h1>{store.name}</h1>
-          <p>{store.address}</p>
-          <p>{store.description}</p>
-          <img src={store.imageShop} alt="Image of store" />
-          <img src={store.imageProduct} alt="Image of shop" />
+        <div className="storeShow">
+          <div className="storeHeader">
+            {store.category.map((category) => (
+              <header key={category.name}>{category.name}</header>
+            ))}
+          </div>
+          <div className="storeBody">
+            <div className="storeTop">
+              <h1>{store.name}</h1>
+              <p>{store.address}</p>
+              
+            </div>
+            <div className="storeMiddle">
+              <img className="shop" src={store.imageShop} alt="Image of store" />
+              <p>{store.description}</p>
+              <img className="product" src={store.imageProduct} alt="Image of shop" />
+            </div>
+          </div>
+          <h2>Comment Section</h2>
+          <div className="storeBottom">
+            {store.comments.map((comment) => (
+              <p key={comment.id}>{comment.content}</p>
+            ))}
+          </div>
         </div>
       }
     </>
