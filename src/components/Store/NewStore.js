@@ -4,7 +4,6 @@ import useForm from '../../hooks/useForm'
 
 import { getAllCategories, newStore } from '../../lib/api'
 import ImageUpload from '../../ImageUpload'
-import ProductUpload from '../../ProductUpload'
 
 export default function NewStore() {
 
@@ -39,11 +38,11 @@ export default function NewStore() {
     )
   }
 
-  const handleImageProduct = product => {
-    handleChange(
-      { target: { name: 'imageShop', value: product } }
-    )
-  }
+  // const handleImageProduct = product => {
+  //   handleChange(
+  //     { target: { name: 'imageShop', value: product } }
+  //   )
+  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -151,7 +150,6 @@ export default function NewStore() {
       <div>
         <label>Product Image</label>
         <div>
-          <ProductUpload onUpload={handleImageProduct}/>
         </div>
       </div>
       <button onClick={handleSubmit}>Submit</button>

@@ -1,11 +1,14 @@
 import React from 'react'
 import { useParams } from 'react-router'
 
-import { getSingleStore } from '../../lib/api'
+import { addComment, deleteComment, getSingleStore } from '../../lib/api'
 
 export default function StoreShow() {
   const { storeId } = useParams()
   const [store, setStore] = React.useState(null)
+  const [comment, setComment] = React.useState('')
+  const [updating, setUpdating] = React.useState(false)
+
 
   React.useEffect(() => {
     const getData = async () => {
@@ -20,6 +23,21 @@ export default function StoreShow() {
   }, [storeId])
 
   console.log('show page', store && store)
+
+  const handleInput = (e) => {
+    setComment(e.target.value)
+  }
+
+  const handleCommentAdd = async () => {
+    try {
+      if (comment !== '') {
+        await addComment(store.id, { content: comment })
+        setComment('')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <>
@@ -45,9 +63,20 @@ export default function StoreShow() {
           <h2>Comment Section</h2>
           <div className="storeBottom">
             {store.comments.map((comment) => (
-              <p key={comment.id}>{comment.content}</p>
+              <>
+                <p key={comment.id}>{comment.content}</p>
+              </>
             ))}
           </div>
+          <div className='textField'>
+            <textarea 
+              maxLength='150' 
+              onChange={handleInput} 
+              value={comment}
+            />
+            <p>Remaining Characters: {150 - comment.length}</p>
+          </div>
+          <button onClick={handleCommentAdd}>Add</button>
         </div>
       }
     </>

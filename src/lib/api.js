@@ -33,6 +33,14 @@ export function login(formData) {
   return axios.post(`${baseUrl}/auth/login/`, formData)
 }
 
-export function profilePage(sub) {
-  return axios.get(`${baseUrl}/auth/profile/${sub}/`, headers())
+export function profilePage(profileId) {
+  return axios.get(`${baseUrl}/auth/profile/${profileId}/`, headers())
+}
+
+export function addComment(storeId, comment) {
+  return axios.post(`${baseUrl}/stores/${storeId}/comments/`, comment, headers())
+}
+
+export function deleteComment(storeId, commentId) {
+  return axios.delete(`${baseUrl}/stores/${storeId}/comments/${commentId}`, headers())
 }

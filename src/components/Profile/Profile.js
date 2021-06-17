@@ -1,5 +1,6 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 import { profilePage } from '../../lib/api'
 import { getPayload } from '../../lib/auth'
 
@@ -11,9 +12,7 @@ export default function Profile() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        console.log('here')
         const { data } = await profilePage(sub)
-        console.log('data', data)
         setProfile(data)
       } catch (error) {
         console.log(error)
@@ -22,7 +21,34 @@ export default function Profile() {
     getData()
   }, [sub])
 
-  console.log('profile', profile && profile)
-
-  return <h1>{profile && profile.username}</h1>
+  return (
+    <>
+      {profile && 
+      <div className="profile">
+        <div className="profileInfo">
+          <h1>{profile.username}</h1>
+          <img src={profile.profileImage} alt={profile.username}/>
+        </div>
+        <div className="profileStores">
+          <h2>Owned Stores</h2>
+          <div className="ownedStores">
+            {profile && profile.ownedStores.map((store) => (
+              <Link to={`/stores/${store.id}`} key={store.id}>
+                <header key={store.id}>{store.name}</header>
+              </Link>
+            ))}
+          </div>
+          <h2>Favourite Stores</h2>
+          <div className="favouriteStores">
+            {profile && profile.favourites.map((store) => (
+              <Link to={`/stores/${store.id}`} key={store.id}>
+                <header key={store.id}>{store.name}</header>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+      }
+    </>
+  )
 }
