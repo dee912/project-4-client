@@ -11,24 +11,145 @@ $font-Montserrat: 'Montserrat', sans-serif;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  margin: 0;
 }
 
+.cardScroll {
+  max-width: 40vw;
+  margin: 20px;
+  position: relative;
+    img{
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+    }
+}
 
+.home {
+  font-family: $font-Unicia;
+  display: flex;
+  flex-direction: column;
+  background: url(https://preview.redd.it/lgikssa3iqs51.png?width=3335&format=png&auto=webp&s=6b7af0682dc3f22e07ba28ba75eb8b1c09e99e71);
+  background-size: cover;
+  background-position: center;
+  h1 {
+    background-color: #612727;
+    color: white;
+    font-size: 50px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  .sub {
+    color: white;
+  }
+  h3 {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #612727;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+  }
+  header {
+    display: grid;
+    place-items: center;
+    background: url(https://i.ytimg.com/vi/VMAPTo7RVCo/maxresdefault.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    border: 5px solid brown;
+  }
+  .storeImage {
+      max-width: 400px;
+      max-height: 200px;
+    }
+  .body{
+    display: grid;
+    place-items: center;
+  }
+  .infoSection {
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    background-color: brown;
+    padding: 10px 0;
+    color: white;
+  }
+  .info {
+    max-width: 850px;
+    font-family: $font-Montserrat;
+  }
+  .wrapper {
+    display: grid;
+    place-items: center;
+    background-color: rgba(165, 42, 42, 0.678);
+  }
+  .featuredStores {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    justify-content: center;
+    align-items: center;
+  }
+  .popUp {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(214, 41, 50, 0.6);
+    color: rgb(255, 255, 255);
+    visibility: hidden;
+    opacity: 0;
+    display: grid;
+    place-items: center;
+    transition: opacity .2s, visibility .2s;
+  }
+  .cardScroll:hover .popUp {
+    visibility: visible;
+    opacity: 1;
+  }
+  button {
+    height: 50px;
+    width: 200px;
+    margin-bottom: 20px;
+    font-family: $font-Unicia;
+    font-size: 20px;
+    background-color: brown;
+    border: 2px solid rgb(131, 31, 31);
+    box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.25);
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.5);
+    }
+  }
+  a {
+    color: white;
+  }
+}
 
 .containerNav{
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.527);
+  background-color: rgb(68, 68, 68);
   height: 50px;
   font-family: $font-Montserrat;
+  p {
+    font-size: 15px;
+  }
+  img {
+    width: 30px;
+    height: 30px;
+  }
   .navbarItem{
     float: left;
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
-    font-weight: bold;
-    border-radius: 25px;
     &:hover {
       background-color: rgba(255, 255, 255, 0.425);
       color: black;
@@ -59,25 +180,52 @@ $font-Montserrat: 'Montserrat', sans-serif;
   }
 }
 
+.indexHeader {
+    display: grid;
+    place-items: center;
+    font-family: $font-Unicia;
+    width: 100vw;
+    height: 20vh;
+    font-size: 50px;
+    background-size: cover;
+    background-position: center;
+    img {
+      width: 100vw;
+      height: 20vh;
+      object-fit: cover;
+      filter: blur(4px);
+    }
+    header {
+      position: absolute;
+      background-color: #612727;
+      color: white;
+      top: 120px;
+      left: 750px;
+      filter: blur(0);
+    }
+}
+
+.filters {
+  display: flex;
+  .input, select {
+    display: grid;
+    width: 18.6vw;
+    height: 40px;
+    border: 1px solid brown;
+    border-radius: 3px;
+    margin: 5px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    padding: 0 10px;
+    user-select: none;
+  }
+}
+
 .storeIndex {
   display: flex;
   flex-direction: row;
   h2 {
     color: black;
-  }
-  input {
-    width: 19vw;
-    height: 30px;
-    border: 2px solid rgb(94, 93, 93);
-    border-radius: 50px;
-    margin: 5px 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    padding: 0 10px;
-  }
-  .mapbox{
-    float: right;
-    margin-top: 22px;
   }
   .storeCard {
     font-family: $font-Unicia;
@@ -112,16 +260,6 @@ $font-Montserrat: 'Montserrat', sans-serif;
       object-fit: cover;
     }
   }
-}
-
-.cardScroll {
-  max-width: 40vw;
-  margin: 20px;
-    img{
-      width: 250px;
-      height: 250px;
-      object-fit: cover;
-    }
 }
 
 .storeCard {
@@ -209,7 +347,38 @@ $font-Montserrat: 'Montserrat', sans-serif;
       max-width: 400px;
     }
   }
-  .ownedStores {
-    
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(90, 23, 23);
+  color: white;
+  p {
+    margin: 5px 0;
+  }
+  h3 {
+    margin: 40px 0 20px 0;
+  }
+  .sections {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .about { 
+    display: grid;
+    place-items: center;
+    margin: 0 50px;
+  }
+  .socials { 
+    display: grid;
+    place-items: center;
+    margin: 0 50px;
+  }
+  .copyright {
+    margin: 40px 0 20px 0;
   }
 }

@@ -26,42 +26,41 @@ export default function Nav() {
       <div className="containerNav">
         <div className="navbarBrand">
           <Link to="" className="navbarItem">
-        Home
+            <img className="navHome" src="https://image.flaticon.com/icons/png/512/2/2144.png" />
           </Link>
           <Link to="/stores" className="navbarItem">
-        Stores
+            <p>Independents</p>
           </Link>
           <Link to="/about" className="navbarItem">
-        About Us
+            <p>About Us</p>
           </Link>
           {isLoggedIn && 
           <>
             <Link to={`/profile/${sub}`} className="navbarItem">
-              Profile
+              <p>Profile</p>
             </Link>
             <Link to="/stores/new" className="navbarItem">
-              New Store
+              <p>New Store</p>
             </Link>
           </>
           }
           {isLoggedIn ? 
             <>
               <Link to="/login" onClick={handleLogout} className="button">
-              Log Out
+                <p>Log Out</p>
               </Link>
             </>
             :
             <>
               <Link to="/login" className="button">
-                Login
+                <p>Login</p>
               </Link>
               <Link to="/register" className="button">
-                Register
+                <p>Register</p>
               </Link>
             </>}
         </div>
       </div>
-      
     </nav>
   )
 }

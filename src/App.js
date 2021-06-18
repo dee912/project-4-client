@@ -10,6 +10,7 @@ import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Profile from './components/Profile/Profile'
 import NewStore from './components/Store/NewStore'
+import Footer from './components/common/Footer'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/register" component={Register}/>
         <Route path="/profile/:profileid" component={Profile}/>
       </Switch>
+      <Footer />
     </BrowserRouter>
   )
 }

@@ -34,14 +34,24 @@ export default function StoreIndex() {
 
   return (
     <>
+      <div className="indexHeader">
+        <img src="https://i.pinimg.com/originals/3d/f9/1f/3df91f254d7776aab078df6abf796f40.jpg" />
+        <header >INDEPENDENTS</header>
+        
+      </div>
+      <div className="filters">
+        <input
+          className="input"
+          type="text"
+          placeholder="Find stores"
+          onChange={handleChange}
+        />
+        <select>
+          <option>All</option>
+        </select>
+      </div>
       <div className="storeIndex" key={stores?.id}>
         <div className="storeContainer">
-          <input
-            className="input"
-            type="text"
-            placeholder="Find stores"
-            onChange={handleChange}
-          />
           <div className="storeCard">
             {stores && stores.filter((store) => {
               if (searchTerm === '') {

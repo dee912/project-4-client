@@ -1,13 +1,12 @@
 import React from 'react'
 import { useParams } from 'react-router'
 
-import { addComment, deleteComment, getSingleStore } from '../../lib/api'
+import { addComment, getSingleStore } from '../../lib/api'
 
 export default function StoreShow() {
   const { storeId } = useParams()
   const [store, setStore] = React.useState(null)
   const [comment, setComment] = React.useState('')
-  const [updating, setUpdating] = React.useState(false)
 
 
   React.useEffect(() => {

@@ -4,20 +4,21 @@ import useForm from '../../hooks/useForm'
 
 import { getAllCategories, newStore } from '../../lib/api'
 import ImageUpload from '../../ImageUpload'
+import ProductUpload from '../../ProductUpload'
 
 export default function NewStore() {
 
   const history = useHistory()
   const [categories, setCategories] = React.useState(null)
-  const { formData, formErrors, handleChange, setFormErrors } = useForm({
+  const { formData, setFormData, formErrors, handleChange, setFormErrors } = useForm({
     name: '',
     category: '',
     imageShop: '',
     imageProduct: '',
     address: '',
     description: '',
-    latitude: 0,
-    longitude: 0,
+    latitude: parseInt(0),
+    longitude: parseInt(0),
   })
 
   React.useEffect(() => {
@@ -32,17 +33,10 @@ export default function NewStore() {
     getData()
   }, [formErrors, setFormErrors])
 
-  const handleImageShop = shop => {
-    handleChange(
-      { target: { name: 'imageShop', value: shop } }
-    )
+  const handleImageUpload = name => file => {
+    console.log('file', file)
+    setFormData({ ...formData, [name]: file })
   }
-
-  // const handleImageProduct = product => {
-  //   handleChange(
-  //     { target: { name: 'imageShop', value: product } }
-  //   )
-  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -123,6 +117,7 @@ export default function NewStore() {
             name="longitude"
             onChange={handleChange}
             value={formData.longitude}
+            type="number"
           />
         </div>
       </div>
@@ -136,6 +131,7 @@ export default function NewStore() {
             name="latitude"
             onChange={handleChange}
             value={formData.latitude}
+            type="number"
           />
         </div>
       </div>
@@ -143,13 +139,13 @@ export default function NewStore() {
       <div>
         <label>Shop Image</label>
         <div>
-          <ImageUpload onUpload={handleImageShop}/>
+          <ImageUpload name="imageShop" onUpload={handleImageUpload('imageShop')}/>
         </div>
       </div>
-
       <div>
         <label>Product Image</label>
         <div>
+          <ProductUpload name="imageProduct" onUpload={handleImageUpload('imageProduct')}/>
         </div>
       </div>
       <button onClick={handleSubmit}>Submit</button>
