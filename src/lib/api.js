@@ -17,6 +17,14 @@ export function getSingleStore(storeId) {
   return axios.get(`${baseUrl}/stores/${storeId}/`)
 }
 
+export function editSingleStore(storeId, formData) {
+  return axios.get(`${baseUrl}/stores/${storeId}/`, formData, headers())
+}
+
+export function deleteStore(storeId) {
+  return axios.delete(`${baseUrl}/stores/${storeId}/`, headers())
+}
+
 export function newStore(formData) {
   return axios.post(`${baseUrl}/stores/`, formData, headers())
 }
@@ -43,4 +51,8 @@ export function addComment(storeId, comment) {
 
 export function deleteComment(storeId, commentId) {
   return axios.delete(`${baseUrl}/stores/${storeId}/comments/${commentId}`, headers())
+}
+
+export function favourite(storeId, userId) {
+  return axios.post(`${baseUrl}/stores/${storeId}/favourite/`, userId, headers())
 }

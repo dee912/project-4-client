@@ -12,7 +12,7 @@ export default function NewStore() {
   const [categories, setCategories] = React.useState(null)
   const { formData, setFormData, formErrors, handleChange, setFormErrors } = useForm({
     name: '',
-    category: '',
+    // category: [''],
     imageShop: '',
     imageProduct: '',
     address: '',
@@ -50,6 +50,9 @@ export default function NewStore() {
     }
   }
 
+  console.log('formdata', formData)
+  
+
   return (
     <form>
       <div>
@@ -65,7 +68,7 @@ export default function NewStore() {
         </div>
       </div>
 
-      <div>
+      {/* <div>
         <label>Category</label>
         <div>
           <select 
@@ -75,25 +78,13 @@ export default function NewStore() {
             onChange={handleChange}
             value={formData.category}
           >
+          <option>All</option>
             {categories && categories.map(category => (
               <option key={category.id}>{category.name}</option>
             ))}
           </select>
         </div>
-      </div>
-
-      <div>
-        <label>Description</label>
-        <div>
-          <input 
-            className={`input ${formErrors.name ? 'invalid' : ''}`}
-            placeholder="Description"
-            name="description"
-            onChange={handleChange}
-            value={formData.description}
-          />
-        </div>
-      </div>
+      </div> */}
 
       <div>
         <label>Address</label>
@@ -148,6 +139,20 @@ export default function NewStore() {
           <ProductUpload name="imageProduct" onUpload={handleImageUpload('imageProduct')}/>
         </div>
       </div>
+
+      <div>
+        <label>Description</label>
+        <div>
+          <textarea 
+            className={`input ${formErrors.name ? 'invalid' : ''}`}
+            placeholder="Description"
+            name="description"
+            onChange={handleChange}
+            value={formData.description}
+          />
+        </div>
+      </div>
+
       <button onClick={handleSubmit}>Submit</button>
     </form>
   )

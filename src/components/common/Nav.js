@@ -9,9 +9,6 @@ export default function Nav() {
   const location = useLocation()
   const { sub } = getPayload()
 
-  console.log('get pay', sub)
-  
-
   const handleLogout = () => {
     removeToken()
     history.push('/')

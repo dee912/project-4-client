@@ -26,7 +26,7 @@ export function getPayload() {
   return JSON.parse(atob(parts[1])) 
 }
 
-console.log('toke', getPayload())
+console.log('toke', getPayload().sub)
 
 
 export function isAuthenticated() {
@@ -36,8 +36,9 @@ export function isAuthenticated() {
   return now < payload.exp
 }
 
-export function isOwner(profileId) {
+export function isOwner(store) {
   const payload = getPayload()
   if (!payload || !isAuthenticated) return false
-  return payload.profileId === profileId
+  return payload.sub === store
 }
+
