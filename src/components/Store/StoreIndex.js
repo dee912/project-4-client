@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 
 import StoreCard from './StoreCard'
@@ -6,11 +6,12 @@ import { getAllCategories, getAllStores } from '../../lib/api'
 
 export default function StoreIndex() {
 
-  const [stores, setStores] = React.useState(null)
-  const [searchTerm, setSearchTerm] = React.useState('')
-  const [selectedStore, setSelectedStore] = React.useState(null)
-  const [categories, setCategories] = React.useState(null)
-  const [viewport, setViewport] = React.useState({
+  const [stores, setStores] = useState(null)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedStore, setSelectedStore] = useState(null)
+  const [filter, setFilter] = useState('All')
+  const [categories, setCategories] = useState(null)
+  const [viewport, setViewport] = useState({
     latitude: 53.434015,
     longitude: -2.585747,
     zoom: 9.5,
@@ -20,9 +21,9 @@ export default function StoreIndex() {
     const getData = async () => {
       try {
         const { data } = await getAllStores()
+        setStores(data)
         const category = await getAllCategories()
         setCategories(category.data)
-        setStores(data)
       } catch (error) {
         console.log(error)
       }
@@ -30,13 +31,20 @@ export default function StoreIndex() {
     getData()
   }, [])
 
-  const handleFilter = (e) => {
-    setCategories(e.target.value)
-  }
-
   const handleChange = (e) => {
     setSearchTerm(e.target.value)
+    setFilter(e.target.value)
   }
+
+  const filteredCategory = stores?.filter((store) => {
+    return store.category[0] === Number(filter) || filter === 'All'
+  })
+
+  // console.log('filter', Number(filter))
+  console.log('filter', filteredCategory)
+  // console.log('store', stores && stores[6].category[0])
+  // console.log('categories', categories && categories)
+  
 
   return (
     <>
@@ -52,10 +60,10 @@ export default function StoreIndex() {
           placeholder="Find stores"
           onChange={handleChange}
         />
-        <select onChange={handleFilter}>
+        <select onChange={handleChange}>
           <option>All</option>
-          {categories && categories.map(category => (
-            <option key={category.id}>{category.name}</option>
+          {categories && categories.map(categories => (
+            <option key={categories.id}>{categories.id}</option>
           ))}
         </select>
       </div>

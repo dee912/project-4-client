@@ -33,39 +33,42 @@ export default function Login() {
           <form
             onSubmit={handleSubmit}  
           >
-            <div className="field">
-              <label className="label">Email</label>
-              <div className="control">
-                <input
-                  className="input"
-                  placeholder="Email"
-                  name="email"
-                  onChange={handleChange}
-                />
+            <div className="inside">
+              <div className="field">
+                <label className="label">Email</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    placeholder="Email"
+                    name="email"
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="field">
-              <label className="label">Password</label>
-              <div className="control">
-                <input
-                  type="password"
-                  className="input"
-                  placeholder="Password"
-                  name="password"
-                  onChange={handleChange}
-                />
+              <div className="field">
+                <label className="label">Password</label>
+                <div className="control">
+                  <input
+                    type="password"
+                    className="input"
+                    placeholder="Password"
+                    name="password"
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
-            </div>
-            {isError && (
-              <p className="help is-danger">
+              {isError && (
+                <p className="help is-danger">
                 Incorrect login details
-              </p>
-            )}
-            <div className="field">
-              <button type="submit" className='button is-fullwidth is-warning'>
+                </p>
+              )}
+              <div className="field">
+                <button type="submit" className='button is-fullwidth is-warning'>
                 Log In
-              </button>
+                </button>
+              </div>
             </div>
+            
           </form>
         </div>
       </div>

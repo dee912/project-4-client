@@ -14,6 +14,12 @@ $font-Montserrat: 'Montserrat', sans-serif;
   margin: 0;
 }
 
+button {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .cardScroll {
   max-width: 40vw;
   margin: 20px;
@@ -314,6 +320,8 @@ $font-Montserrat: 'Montserrat', sans-serif;
 .storeShow {
   display: flex;
   flex-direction: column;
+  background: url(https://static.vecteezy.com/system/resources/previews/001/901/432/non_2x/abstract-blur-light-bokeh-free-photo.jpg);
+  background-size: cover;
   h1 {
   font-family: $font-Unicia;
   font-size: 50px;
@@ -324,6 +332,11 @@ $font-Montserrat: 'Montserrat', sans-serif;
   p { 
     font-family: $font-Montserrat;
     font-weight: bold;
+  }
+  .title {
+    background-color: brown;
+    margin: 10px;
+    color: white;
   }
   .storeBody {
     display: grid;
@@ -337,6 +350,7 @@ $font-Montserrat: 'Montserrat', sans-serif;
   .storeTop {
     display: grid;
     place-items: center;
+    background-color: rgba(87, 28, 28, 0.95);
   }
   .storeMiddle {
     display: flex;
@@ -344,6 +358,14 @@ $font-Montserrat: 'Montserrat', sans-serif;
     margin: 10px;
     padding: 10px;
     max-width: 600px;
+    background-color: rgba(165, 42, 42, 0.8);
+    box-shadow: inset 0px 0px 10px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    color: white;
+  }
+  .middleImg {
+    box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
   }
   .shop {
     margin: 5px;
@@ -357,6 +379,22 @@ $font-Montserrat: 'Montserrat', sans-serif;
   }
   .storeBottom {
     margin: 10px;
+    padding: 10px;
+    max-width: 20vw;
+    background-color: rgb(155, 53, 53);
+    box-shadow: inset 0px 0px 10px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+  }
+  .fav {
+    padding: 10px;
+    background-color: brown;
+    border: none;
+    box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.5);
+    float: left;
+    border-radius: 20px;
+    &:hover {
+      background-color: rgb(216, 56, 56);
+    }
   }
 }
 
@@ -440,5 +478,73 @@ footer {
     max-width: 700px;
     font-family: $font-Montserrat;
     margin: 10px;
+  }
+}
+
+.newStore {
+  display: grid;
+  place-items: center;
+  font-family: $font-Unicia;
+  font-size: 50px;
+  background-color: brown;
+  margin: 100px;
+  box-shadow: inset 0px 0px 10px 0 rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.form {
+  display: grid;
+  place-items: center;
+  font-family: $font-Unicia;
+  margin: 100px;
+  margin-bottom: 200px;
+  background-color: brown;
+  box-shadow: inset 0px 0px 10px 0 rgba(0, 0, 0, 0.5);
+  text-align: center;
+  .inside {
+    display: grid;
+    place-items: center;
+    background-color: rgb(255, 255, 255);
+    margin: 50px;
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    box-shadow:  0px 0px 10px 0 rgba(0, 0, 0, 0.5);
+  }
+  input {
+    height: 25px;
+    width: 200px;
+    margin: 5px;
+  }
+  textarea {
+    width: 200px;
+  }
+  button {
+    height: 30px;
+    width: 200px;
+    font-family: $font-Montserrat;
+    margin: 10px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid brown;
+    color: brown;
+    font-weight: bold;
+    &:hover {
+      border: none;
+      box-shadow: inset 0px 0px 10px 0 rgba(0, 0, 0, 0.5);
+      background-color: brown;
+      color: white;
+    }
+  }
+}
+
+.longLat {
+  background-color: brown;
+  box-shadow: inset 0px 0px 10px 0 rgba(0, 0, 0, 0.5);
+  color: white;
+  a, button {
+    color: brown;
+    &:hover {
+      color: white;
+      cursor: pointer;
+    }
   }
 }

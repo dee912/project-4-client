@@ -21,33 +21,39 @@ export default function Profile() {
     getData()
   }, [sub])
 
+
+
   return (
     <>
       {profile && 
-      <div className="profile">
-        <div className="profileInfo">
-          <h1>{profile.username}</h1>
-          <img src={profile.profileImage} alt={profile.username}/>
-        </div>
-        <div className="profileStores">
-          <h2>Owned Stores</h2>
-          <div className="ownedStores">
-            {profile && profile.ownedStores.map((store) => (
-              <Link to={`/stores/${store.id}`} key={store.id}>
-                <header key={store.id}>{store.name}</header>
-              </Link>
-            ))}
+      <div>
+        {/* <button>Delete</button> */}
+        <div className="profile">
+          <div className="profileInfo">
+            <h1>{profile.username}</h1>
+            <img src={profile.profileImage} alt={profile.username}/>
           </div>
-          <h2>Favourite Stores</h2>
-          <div className="favouriteStores">
-            {profile && profile.favourites.map((store) => (
-              <Link to={`/stores/${store.id}`} key={store.id}>
-                <header key={store.id}>{store.name}</header>
-              </Link>
-            ))}
+          <div className="profileStores">
+            <h2>Owned Stores</h2>
+            <div className="ownedStores">
+              {profile && profile.ownedStores.map((store) => (
+                <Link to={`/stores/${store.id}`} key={store.id}>
+                  <header key={store.id}>{store.name}</header>
+                </Link>
+              ))}
+            </div>
+            <h2>Favourite Stores</h2>
+            <div className="favouriteStores">
+              {profile && profile.favourites.map((store) => (
+                <Link to={`/stores/${store.id}`} key={store.id}>
+                  <header key={store.id}>{store.name}</header>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+      
       }
     </>
   )

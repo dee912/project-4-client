@@ -9,7 +9,7 @@ import ProductUpload from '../../ProductUpload'
 export default function NewStore() {
 
   const history = useHistory()
-  const [categories, setCategories] = React.useState(null)
+  // const [categories, setCategories] = React.useState(null)
   const { formData, setFormData, formErrors, handleChange, setFormErrors } = useForm({
     name: '',
     // category: [''],
@@ -25,7 +25,8 @@ export default function NewStore() {
     const getData = async () => {
       try {
         const { data } = await getAllCategories()
-        setCategories(data)
+        console.log('data', data)
+        
       } catch (error) {
         setFormErrors({ ...formErrors, ...error.response.data })
       }
@@ -34,7 +35,6 @@ export default function NewStore() {
   }, [formErrors, setFormErrors])
 
   const handleImageUpload = name => file => {
-    console.log('file', file)
     setFormData({ ...formData, [name]: file })
   }
 
@@ -54,21 +54,24 @@ export default function NewStore() {
   
 
   return (
-    <form>
-      <div>
-        <label>Name</label>
-        <div>
-          <input 
-            className={`input ${formErrors.name ? 'invalid' : ''}`}
-            placeholder="Name"
-            name="name"
-            onChange={handleChange}
-            value={formData.name}
-          />
-        </div>
-      </div>
+    <>
+      <h1 className="newStore">New Store</h1>
+      <form className="form">
+        <div className="inside">
+          <div>
+            <label>Name</label>
+            <div>
+              <input 
+                className={`input ${formErrors.name ? 'invalid' : ''}`}
+                placeholder="Name"
+                name="name"
+                onChange={handleChange}
+                value={formData.name}
+              />
+            </div>
+          </div>
 
-      {/* <div>
+          {/* <div>
         <label>Category</label>
         <div>
           <select 
@@ -86,74 +89,81 @@ export default function NewStore() {
         </div>
       </div> */}
 
-      <div>
-        <label>Address</label>
-        <div>
-          <input 
-            className={`input ${formErrors.name ? 'invalid' : ''}`}
-            placeholder="Address"
-            name="address"
-            onChange={handleChange}
-            value={formData.address}
-          />
-        </div>
-      </div>
+          <div>
+            <label>Address</label>
+            <div>
+              <input 
+                className={`input ${formErrors.name ? 'invalid' : ''}`}
+                placeholder="Address"
+                name="address"
+                onChange={handleChange}
+                value={formData.address}
+              />
+            </div>
+          </div>
+          
+          <div className="longLat">
+            <button><a href="https://www.gps-coordinates.net/">Need Help?</a></button>
+            <div>
+              <label>Longitude</label>
+              <div>
+                <input 
+                  className={`input ${formErrors.name ? 'invalid' : ''}`}
+                  placeholder="Longitude"
+                  name="longitude"
+                  onChange={handleChange}
+                  value={formData.longitude}
+                  type="number"
+                />
+              </div>
+            </div>
 
-      <div>
-        <label>Longitude</label>
-        <div>
-          <input 
-            className={`input ${formErrors.name ? 'invalid' : ''}`}
-            placeholder="Longitude"
-            name="longitude"
-            onChange={handleChange}
-            value={formData.longitude}
-            type="number"
-          />
-        </div>
-      </div>
+            <div>
+              <label>Latitude</label>
+              <div>
+                <input 
+                  className={`input ${formErrors.name ? 'invalid' : ''}`}
+                  placeholder="Latitude"
+                  name="latitude"
+                  onChange={handleChange}
+                  value={formData.latitude}
+                  type="number"
+                />
+              </div>
+            </div>
+          </div>
+          
 
-      <div>
-        <label>Latitude</label>
-        <div>
-          <input 
-            className={`input ${formErrors.name ? 'invalid' : ''}`}
-            placeholder="Latitude"
-            name="latitude"
-            onChange={handleChange}
-            value={formData.latitude}
-            type="number"
-          />
-        </div>
-      </div>
+          <div>
+            <label>Shop Image</label>
+            <div>
+              <ImageUpload name="imageShop" onUpload={handleImageUpload('imageShop')}/>
+            </div>
+          </div>
+          <div>
+            <label>Product Image</label>
+            <div>
+              <ProductUpload name="imageProduct" onUpload={handleImageUpload('imageProduct')}/>
+            </div>
+          </div>
 
-      <div>
-        <label>Shop Image</label>
-        <div>
-          <ImageUpload name="imageShop" onUpload={handleImageUpload('imageShop')}/>
-        </div>
-      </div>
-      <div>
-        <label>Product Image</label>
-        <div>
-          <ProductUpload name="imageProduct" onUpload={handleImageUpload('imageProduct')}/>
-        </div>
-      </div>
+          <div>
+            <label>Description</label>
+            <div>
+              <textarea 
+                className={`input ${formErrors.name ? 'invalid' : ''}`}
+                placeholder="Description"
+                name="description"
+                onChange={handleChange}
+                value={formData.description}
+              />
+            </div>
+          </div>
 
-      <div>
-        <label>Description</label>
-        <div>
-          <textarea 
-            className={`input ${formErrors.name ? 'invalid' : ''}`}
-            placeholder="Description"
-            name="description"
-            onChange={handleChange}
-            value={formData.description}
-          />
+          <button onClick={handleSubmit}>Submit</button>
         </div>
-      </div>
-
-      <button onClick={handleSubmit}>Submit</button>
-    </form>
+      
+      </form>
+    </>
   )
 }

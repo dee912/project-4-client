@@ -36,7 +36,9 @@ function Home() {
       <div className="body">
         <div className="infoSection">
           <div className="info">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Welcome to Independent NW, your number one source for all things niche. We&apos;re dedicated to providing you the very best of information, with an emphasis on independence, locals and affordable.
+              Founded in 2021 by Devante Spaine, Independent NW has come a long way from its beginnings in simple flyers posted door to door. When Dee first started out, his passion for locally owned businesses drove them to start their own business.
+              We hope you enjoy these amazing establishments as much as we do.</p>
           </div>
         </div>
         <div className="wrapper">

@@ -3,20 +3,21 @@ import { useParams } from 'react-router'
 import { useHistory, useLocation } from 'react-router-dom'
 import useForm from '../../hooks/useForm'
 
-import { addComment, deleteComment, deleteStore, editSingleStore, favourite, getSingleStore } from '../../lib/api'
-import { getPayload, isOwner } from '../../lib/auth'
+import { addComment, deleteComment, deleteStore, favourite, getSingleStore } from '../../lib/api'
+import { getPayload, isAuthenticated, isOwner } from '../../lib/auth'
 
 export default function StoreShow() {
   const history = useHistory()
-  const location = useLocation()
   const { storeId } = useParams()
   const { sub } = getPayload()
+  const location = useLocation()
   const [store, setStore] = useState(null)
   const [comment, setComment] = useState('')
   const [isAddingComment, setIsAddingComment] = useState(false)
   const [favourited, setFavourited] = useState(false)
-  const [edit, setEdit] = useState(false)
-  const { formData, setFormData } = useForm({
+  const [isLoggedIn, setIsLoggedIn] = React.useState(isAuthenticated())
+  // const [edit, setEdit] = useState(false)
+  const { formData } = useForm({
     name: '',
     address: '',
     imageShop: '',
@@ -38,6 +39,10 @@ export default function StoreShow() {
     }
     getData()
   }, [storeId, isAddingComment])
+
+  React.useEffect(() => {
+    setIsLoggedIn(isAuthenticated())
+  }, [location.pathname])
 
   const handleFav = async () => {
     try {
@@ -74,16 +79,16 @@ export default function StoreShow() {
     }
   }
 
-  const handleEdit = async () => {
-    setEdit(false)
-    try {
-      await editSingleStore(storeId, formData)
-      console.log('click')
-    } catch (error) {
-      console.log(error)
-      setFormData({ ...store })
-    }
-  }
+  // const handleEdit = async () => {
+  //   setEdit(false)
+  //   try {
+  //     await editSingleStore(storeId, formData)
+  //     setEdit(true)
+  //   } catch (error) {
+  //     console.log(error)
+  //     setFormData({ ...store })
+  //   }
+  // }
 
   const handleStoreDelete = async () => {
     try {
@@ -99,7 +104,6 @@ export default function StoreShow() {
   console.log('store', store && store.owner)
   console.log('fav', favourited)
 
-
   return (
     <>
       {store &&
@@ -109,35 +113,41 @@ export default function StoreShow() {
               <header key={category.name}>{category.name}</header>
             ))}
           </div>
-          <div className="storeBody">
-            <button
-              className="fav"
-              onClick={handleFav}
-              type="submit"
-              name="favourite"
-            >
-              {!favourited ? <p>favourite</p> : <p>un-favourite</p>}
-            </button>
+          <div className="storeTop">
+            <h1 className="title">{store.name}</h1>
+            <p className="title">{store.address}</p>
+          </div>
+
+          <div className="profileButtons">
+            {isLoggedIn ?
+              <button
+                className="fav"
+                onClick={handleFav}
+                type="submit"
+                name="favourite"
+              >
+                {!favourited ? <p>favourite</p> : <p>un-favourite</p>}
+              </button>
+              : null
+            }
             {
               isOwner(store.owner) &&
               <>
-                <button onClick={handleEdit}>edit</button>
+                {/* <button onClick={handleEdit}>edit</button> */}
                 <button onClick={handleStoreDelete}>delete</button>
               </>
             }
-            <div className="storeTop">
-              <h1>{store.name}</h1>
-              <p>{store.address}</p>
-              
-            </div>
+          </div>
+          <div className="storeBody">
             <div className="storeMiddle">
-              <img className="shop" src={store.imageShop} alt="Image of store" />
+              <img className="shop middleImg" src={store.imageShop} alt="Image of store" />
               <p>{store.description}</p>
-              <img className="product" src={store.imageProduct} alt="Image of shop" />
+              <img className="product middleImg" src={store.imageProduct} alt="Image of shop" />
             </div>
           </div>
-          <h2>Comment Section</h2>
+
           <div className="storeBottom">
+            <h2>Comment Section</h2>
             {store.comments.map((comment) => (
               <>
                 <p key={comment.id}>{comment.content}</p>
@@ -147,17 +157,21 @@ export default function StoreShow() {
                 }
               </>
             ))}
+            {isLoggedIn ?
+              <div className='textField'>
+                <textarea 
+                  maxLength='150' 
+                  onChange={handleInput} 
+                  value={comment}
+                />
+                <p>Remaining Characters: {150 - comment.length}</p>
+                <button onClick={handleCommentAdd}>Add</button>
+              </div>
+              : null
+            }
           </div>
           
-          <div className='textField'>
-            <textarea 
-              maxLength='150' 
-              onChange={handleInput} 
-              value={comment}
-            />
-            <p>Remaining Characters: {150 - comment.length}</p>
-            <button onClick={handleCommentAdd}>Add</button>
-          </div>
+          
         </div>
       }
     </>

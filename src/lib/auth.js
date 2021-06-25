@@ -26,8 +26,6 @@ export function getPayload() {
   return JSON.parse(atob(parts[1])) 
 }
 
-console.log('toke', getPayload().sub)
-
 
 export function isAuthenticated() {
   const payload = getPayload()
