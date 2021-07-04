@@ -1,13 +1,12 @@
 import axios from 'axios'
 import { getToken } from './auth'
+import { baseUrl } from '../config'
 
 function headers() {
   return {
     headers: { Authorization: `Bearer ${getToken()}` },
   }
 }
-
-const baseUrl = '/api'
 
 export function getAllStores() {
   return axios.get(`${baseUrl}/stores/`)
@@ -50,7 +49,7 @@ export function addComment(storeId, comment) {
 }
 
 export function deleteComment(storeId, commentId) {
-  return axios.delete(`${baseUrl}/stores/${storeId}/comments/${commentId}`, headers())
+  return axios.delete(`${baseUrl}/stores/${storeId}/comments/${commentId}/`, headers())
 }
 
 export function favourite(storeId, userId) {

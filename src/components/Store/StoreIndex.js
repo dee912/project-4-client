@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 
 import StoreCard from './StoreCard'
-import { getAllCategories, getAllStores } from '../../lib/api'
+import { getAllStores } from '../../lib/api'
 
 export default function StoreIndex() {
 
