@@ -133,7 +133,6 @@ export default function StoreShow() {
             {
               isOwner(store.owner) &&
               <>
-                {/* <button onClick={handleEdit}>edit</button> */}
                 <button onClick={handleStoreDelete}>delete</button>
               </>
             }

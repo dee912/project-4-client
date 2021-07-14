@@ -30,7 +30,7 @@ export default function StoreIndex() {
   const handleChange = (e) => {
     setSearchTerm(e.target.value)
   }
-  
+
   return (
     <>
       <div className="indexHeader">
